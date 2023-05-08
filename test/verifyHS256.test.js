@@ -60,6 +60,6 @@ describe('JWT verify with HS256 algorithm', function () {
           done(e);
         }
       });
-    }, 1500);
+    }, 1900);
   });
 });

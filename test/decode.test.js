@@ -1,5 +1,5 @@
 
-const jwt = require('../src/index');
+const jwt = require('../index');
 const { expect } = require('chai');
 
 describe('decode', () => {

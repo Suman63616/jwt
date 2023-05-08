@@ -19,7 +19,7 @@ function createSignature(secret, encodedHeader, encodedPayload, algorithm) {
   } else if (algorithm === 'ES256') {
     const signer = crypto.createSign('sha256');
     signer.update(encodedHeader + '.' + encodedPayload);
-    return signer.sign({ key: secret, padding: crypto.constants.RSA_PKCS1_PSS_PADDING, saltLength: 32 }, 'base64');
+    return signer.sign(secret, 'base64');
   } else {
     throw new Error('Unsupported algorithm');
   }

@@ -1,7 +1,7 @@
-const jwt = require('../src/index');
+const jwt = require('../index');
 const expect = require('chai').expect;
 
-describe('JWT verification', () => {
+describe('JWT expiry verification', () => {
   const secret ='secret'
   it('should throw an error if the token has expired //testing with negative value', () => {
     const expiresIn = -3600;

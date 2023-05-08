@@ -38,7 +38,7 @@ function verify(token, secret, callback) {
       const [encodedHeader, encodedPayload, signature] = parts;
       const verifier = crypto.createVerify('SHA256');
       verifier.update(encodedHeader + '.' + encodedPayload);
-      if (!verifier.verify({ key: secret, padding: crypto.constants.RSA_PKCS1_PSS_PADDING, saltLength: 32 }, signature, 'base64')) {
+      if (!verifier.verify(secret, signature, 'base64')) {
         throw new Error('Invalid signature');
       }
     } else {

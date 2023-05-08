@@ -29,7 +29,7 @@ var token = jwt.sign({name: 'suman' }, 'secret',{ expiresIn : 3600,algorithm:'HS
 ```js
 const jwt = require('jwtlib');
 var privateKey = fs.readFileSync('private.key');// get private key should be pem file
-var token = jwt.sign({ name: 'suman' }, privateKey, { expiresIn : 3600,algorithm:'HS256'});
+var token = jwt.sign({ name: 'suman' }, privateKey, { expiresIn : 3600,algorithm:'RS256'});
 ```
 
 # sign with  ES256 
