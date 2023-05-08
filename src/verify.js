@@ -23,7 +23,8 @@ function verify(token, secret, callback) {
       if (!verifier.verify(secret, signature, 'base64')) {
         throw new Error('Invalid signature');
       }
-    } else {
+    } 
+    if(alg ==='HS256') {
       const [encodedHeader, encodedPayload, signature] = parts;
       const candidateSignature = createSignature(
         secret,
