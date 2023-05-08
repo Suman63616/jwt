@@ -25,11 +25,18 @@ const jwt = require('jwtlib');
 var token = jwt.sign({name: 'suman' }, 'secret',{ expiresIn : 3600,algorithm:'HS256'});
 ```
 
-# sign with RSA SHA256
+# sign with RSA SHA256 
 ```js
 const jwt = require('jwtlib');
 var privateKey = fs.readFileSync('private.key');// get private key should be pem file
 var token = jwt.sign({ name: 'suman' }, privateKey, { expiresIn : 3600,algorithm:'HS256'});
+```
+
+# sign with  ES256 
+```js
+const jwt = require('jwtlib');
+var privateKey = fs.readFileSync('private.key');// get private key should be pem file
+var token = jwt.sign({ name: 'suman' }, privateKey, { expiresIn : 3600,algorithm:'ES256'});
 ```
 
 # verify a token symmetric
