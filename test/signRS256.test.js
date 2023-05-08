@@ -1,8 +1,8 @@
 const fs= require('fs')
 const jwt = require('../index');
 const expect = require('chai').expect;
-const privateKey = fs.readFileSync('rsPrivate.key');
-const private2Key = fs.readFileSync('private2.key');
+const privateKey = fs.readFileSync('rsPrivate.key','utf-8');
+const private2Key = fs.readFileSync('private2.key','utf-8');
 var secret = privateKey;
 
 

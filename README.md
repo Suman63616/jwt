@@ -9,12 +9,13 @@
 
 
 # Import in node.js file
-```const jwt = require('jwtlib')
-//or
+```js
+const jwt = require('jwtlib')
+         //or
 import jwt from ('jwtlib')
 ```
 
----must specify the algorithm as 'HS256' for Symmetric and 'RS256' for asymmetric in options.
+---must specify the algorithm as 'HS256' for Symmetric and 'RS256' or 'ES256' for asymmetric in options.
 
 jwt.sign(payload, secretOrPrivateKey, {options})
 secretOrPrivateKey is a string (utf-8 encoded), buffer, object, or KeyObject containing either the secret for HMAC algorithms or the PEM encoded private key for RSA and ECDSA. In case of a private key with passphrase an object { key, passphrase } can be used (based on crypto documentation), in this case be sure you pass the algorithm. When signing with RSA algorithms the minimum modulus length is 2048 except when the allowInsecureKeySizes option is set to true. Private keys below this size will be rejected with an error.
