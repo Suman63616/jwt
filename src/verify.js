@@ -23,8 +23,7 @@ function verify(token, secret, callback) {
       if (!verifier.verify(secret, signature, 'base64')) {
         throw new Error('Invalid signature');
       }
-    } 
-    if(alg ==='HS256') {
+    } else if (alg === 'HS256') {
       const [encodedHeader, encodedPayload, signature] = parts;
       const candidateSignature = createSignature(
         secret,
@@ -35,7 +34,17 @@ function verify(token, secret, callback) {
       if (signature !== candidateSignature) {
         throw new Error('Invalid signature');
       }
+    } else if (alg === 'ES256') {
+      const [encodedHeader, encodedPayload, signature] = parts;
+      const verifier = crypto.createVerify('SHA256');
+      verifier.update(encodedHeader + '.' + encodedPayload);
+      if (!verifier.verify({ key: secret, padding: crypto.constants.RSA_PKCS1_PSS_PADDING, saltLength: 32 }, signature, 'base64')) {
+        throw new Error('Invalid signature');
+      }
+    } else {
+      throw new Error('Unsupported algorithm:');
     }
+
     const exp = decoded.exp;
     if (dateInPast(exp)) {
       throw new Error('Token has expired');

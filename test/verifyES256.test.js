@@ -1,17 +1,17 @@
 const fs= require('fs')
 const jwt = require('../index');
 const expect = require('chai').expect;
-const privateKey = fs.readFileSync('rsPrivate.key');
-const publicKey = fs.readFileSync('rsPublic.key');
+const privateKey = fs.readFileSync('esPrivate.key');
+const publicKey = fs.readFileSync('esPublic.key');
 const invalidPublic = fs.readFileSync('invalidPublic.key');
 const secret = privateKey;
 
 
 
-describe('JWT verify with RS256 algorithm', () => {
+describe('JWT verify with ES256 algorithm', () => {
     it('should return the decoded payload on successful verification of RS256', () => {
       const payload = { sub: '1234567890', name: 'John Doe', iat: 1516239022 };
-      const token = jwt.sign(payload, secret, {algorithm:'RS256'});
+      const token = jwt.sign(payload, secret, {algorithm:'ES256'});
       jwt.verify(token, publicKey, (err, decoded) => {
         expect(err).to.be.null;
         expect(decoded.sub).to.equal('1234567890');
@@ -40,7 +40,7 @@ describe('JWT verify with RS256 algorithm', () => {
 
     it('should return an error for an invalid secret', function (done) {
       const payload = { id: 123 };
-      const token = jwt.sign(payload, secret, {algorithm:'RS256'});
+      const token = jwt.sign(payload, secret, {algorithm:'ES256'});
       jwt.verify(token, invalidPublic.key,  function (err, decoded) {
         expect(err).to.not.equal(null);
         done();
@@ -52,6 +52,7 @@ describe('JWT verify with RS256 algorithm', () => {
       const token = jwt.sign(payload, secret, {algorithm:'RS356'});
       jwt.verify(token, secret, function (err, decoded) {
         expect(err).to.not.equal(null);
+        
         done();
       });
     });
@@ -59,7 +60,7 @@ describe('JWT verify with RS256 algorithm', () => {
     it('should throw an error if the token has expired //testing with negative value', () => {
       const expiresIn = -3600;
       const payload = { sub: '1234567890', name: 'John Doe', iat: 1516239022 };
-      const token = jwt.sign(payload, secret,  { expiresIn,algorithm:'RS256' });
+      const token = jwt.sign(payload, secret,  { expiresIn,algorithm:'ES256' });
       jwt.verify(token, secret,  (err, decoded) => {
         expect(err).to.not.be.null;
         expect(decoded).to.be.false;
@@ -71,7 +72,7 @@ describe('JWT verify with RS256 algorithm', () => {
      
       const expiresIn = 1;
       const payload = { sub: '1234567890', name: 'John Doe', iat: 1516239022 };
-      const token = jwt.sign(payload, secret, { expiresIn,algorithm:'RS256' });
+      const token = jwt.sign(payload, secret, { expiresIn,algorithm:'ES256' });
   
       // Wait for 2 seconds before verifying the token
       await new Promise(resolve => setTimeout(resolve, 2000));
@@ -93,7 +94,7 @@ describe('JWT verify with RS256 algorithm', () => {
      
     const expiresIn = 3;
     const payload = { sub: '1234567890', name: 'John Doe', iat: 1516239022 };
-    const token = jwt.sign(payload, secret, { expiresIn,algorithm:'RS256' });
+    const token = jwt.sign(payload, secret, { expiresIn,algorithm:'ES256' });
 
     // Wait for 2 seconds before verifying the token
     await new Promise(resolve => setTimeout(resolve, 2000));
