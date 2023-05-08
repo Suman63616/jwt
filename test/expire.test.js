@@ -1,4 +1,4 @@
-const jwt = require('../index');
+const jwt = require('../src/index');
 const expect = require('chai').expect;
 
 describe('JWT verification', () => {

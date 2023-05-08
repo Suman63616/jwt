@@ -1,6 +1,6 @@
 {
-  "name": "jwtlib",
-  "version": "3.0.0",
+  "name": "jsonwebtoken_1",
+  "version": "2.0.5",
   "description": "JSON Web Token implementation (symmetric and asymmetric)",
   "main": "index.js",
   "bin": "index.js",
@@ -16,16 +16,17 @@
   ],
   "author": "Suman M",
   "dependencies": {
+    
     "crypto": "^1.0.1"
    
   },
   "devDependencies": {
-    
+   
     "chai": "^4.3.7",
     "mocha": "^5.2.0"
   },
   "files": [
     "src"
-   
+    
   ]
 }

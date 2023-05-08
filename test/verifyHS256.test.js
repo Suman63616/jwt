@@ -50,7 +50,7 @@ describe('JWT verify with HS256 algorithm', function () {
   it('should throw an error for an expired token', function (done) {
     const payload = { sub: '1234567890', name: 'John Doe' };
    
-    const token = jwt.sign(payload, secret, { expiresIn: -1,algorithm :'HS256' });
+    const token = jwt.sign(payload, secret, { expiresIn: 1,algorithm :'HS256' });
     setTimeout(function () {
       jwt.verify(token, secret, function (err, decoded) {
         try {
@@ -60,6 +60,6 @@ describe('JWT verify with HS256 algorithm', function () {
           done(e);
         }
       });
-    }, 1900);
+    }, 1500);
   });
 });

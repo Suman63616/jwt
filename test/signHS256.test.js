@@ -1,12 +1,12 @@
 const jwt = require('../index');
 const expect = require('chai').expect;
 
-
+require('dotenv').config()
 
 
 
 describe('JWT sign with HS256 algorithm', () => {
-  const secret = 'secret'
+  const secret = `${process.env.ACCESS_TOKEN_SECRET}`
     const payload = { id: 123 };
   it('should sign a JWT with HS256 algorithm', () => {
     const token = jwt.sign(payload, secret);
