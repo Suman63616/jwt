@@ -1,6 +1,7 @@
 {
-  "name": "jwtlib",
-  "version": "1.0.0",
+  "name": "jsonwebtoken-lib",
+  "version": "0.1.0",
+  "license": "MIT",
   "description": "JSON Web Token implementation (symmetric and asymmetric)",
   "main": "index.js",
   "bin": "index.js",

@@ -14,9 +14,22 @@ describe('JWT expiry verification', () => {
     });
   });
 
+  it('should throw an error for invalid exp', () => {
+    const expiresIn = '$wdsfd';
+    const payload = { sub: '1234567890', name: 'John Doe', iat: 1516239022 };
+    const token = jwt.sign(payload, secret,  { expiresIn,algorithm:'HS256' });
+   
+    jwt.verify(token, secret,  (err, decoded) => {
+      expect(err).to.not.be.null;
+      expect(err.message).to.be.equal('invalid exp value');
+      expect(decoded).to.be.false;
+      
+    });
+  });
+
   it('should throw an error if the token has expired //testing with positive value', async function()  {
    
-    const expiresIn = 1;
+    const expiresIn = '1s';
     const payload = { sub: '1234567890', name: 'John Doe', iat: 1516239022 };
     const token = jwt.sign(payload, secret, { expiresIn,algorithm:'HS256' });
 
@@ -38,7 +51,7 @@ describe('JWT expiry verification', () => {
 
 it('should not throw error and decode the token for token not expired', async function()  {
    
-  const expiresIn = 3;
+  const expiresIn = '3s';
   const payload = { sub: '1234567890', name: 'John Doe', iat: 1516239022 };
   const token = jwt.sign(payload, secret, { expiresIn,algorithm:'HS256' });
 

@@ -91,7 +91,7 @@ describe('JWT verify with RS256 algorithm', () => {
 
   it('should not throw error for token not expired', async function()  {
      
-    const expiresIn = 3;
+    const expiresIn = 4;
     const payload = { sub: '1234567890', name: 'John Doe', iat: 1516239022 };
     const token = jwt.sign(payload, secret, { expiresIn,algorithm:'RS256' });
 

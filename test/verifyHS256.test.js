@@ -4,7 +4,8 @@ const expect = require('chai').expect;
 
 describe('JWT verify with HS256 algorithm', function () {
   const secret = 'test';
-  const token = jwt.sign({ sub: '1234567890' }, secret, {algorithm :'HS256'});
+  const expiresIn='15m';
+  const token = jwt.sign({ sub: '1234567890' }, secret, {expiresIn,algorithm :'HS256'});
   
   it('should return the decoded payload on successful verification of HS256', function (done) {
     jwt.verify(token, secret, function (err, decoded) {
