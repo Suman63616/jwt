@@ -1,6 +1,6 @@
 const crypto = require("crypto");
-const decode = require("./src/decode");
-const { createSignature } = require("./src/sign");
+const decode = require("./decode");
+const { createSignature } = require("./sign");
 
 function verify(token, secret, callback) {
   try {

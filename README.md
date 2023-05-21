@@ -10,9 +10,9 @@
 
 # Import in node.js file
 ```js
-const jwt = require('jwtlib')
+const jwt = require('jsonwebtoken-lib')
          //or
-import jwt from ('jwtlib')
+import jwt from ('jsonwebtoken-lib')
 ```
 
 ---must specify the algorithm as 'HS256' for Symmetric and 'RS256' or 'ES256' for asymmetric in options.
