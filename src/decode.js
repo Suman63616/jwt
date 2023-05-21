@@ -4,7 +4,7 @@ function decode(token) {
     throw new Error("Invalid JWT");
   }
   const payload = parts[1];
-  return JSON.parse(Buffer.from(payload, "base64").toString());
+  return JSON.parse(atob(payload));
 }
 
 module.exports = decode;

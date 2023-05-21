@@ -1,6 +1,6 @@
 # Installation
 ```bash 
- $ npm install jwtlib
+ $ npm install jsonwebtoken-lib
 ```
 
 # Usage

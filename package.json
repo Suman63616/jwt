@@ -1,6 +1,6 @@
 {
   "name": "jsonwebtoken-lib",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "license": "MIT",
   "description": "JSON Web Token implementation (symmetric and asymmetric)",
   "main": "index.js",
@@ -17,6 +17,8 @@
   ],
   "author": "Suman M",
   "dependencies": {
+    "atob": "^2.1.2",
+    "base64url": "^3.0.1",
     "crypto": "^1.0.1"
   },
   "devDependencies": {
