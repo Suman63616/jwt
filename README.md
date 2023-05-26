@@ -22,20 +22,20 @@ secretOrPrivateKey is a string (utf-8 encoded), buffer, object, or KeyObject con
 
 # Sign with (HMAC SHA256)
 ```js
-const jwt = require('jwtlib');
+const jwt = require('jsonwebtoken-lib');
 var token = jwt.sign({name: 'suman' }, 'secret',{ expiresIn : '15m',algorithm:'HS256'});
 ```
 
 # sign with RSA SHA256 
 ```js
-const jwt = require('jwtlib');
+const jwt = require('jsonwebtoken-lib');
 var privateKey = fs.readFileSync('private.key');// get private key should be pem file
 var token = jwt.sign({ name: 'suman' }, privateKey, { expiresIn : '15m',algorithm:'RS256'});
 ```
 
 # sign with  ES256 
 ```js
-const jwt = require('jwtlib');
+const jwt = require('jsonwebtoken-lib');
 var privateKey = fs.readFileSync('private.key');// get private key should be pem file
 var token = jwt.sign({ name: 'suman' }, privateKey, { expiresIn : '15m',algorithm:'ES256'});
 ```
